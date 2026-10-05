@@ -1,0 +1,46 @@
+@layer base {
+  :root {
+    --color-background: #f9f9f9;
+    --color-text: #1a1a1a;
+    --color-accent: #007bff;
+    --color-accent-hover: #0056b3;
+    --color-border: #e0e0e0;
+    --color-card-background: #ffffff;
+    --color-card-shadow: rgba(0, 0, 0, 0.1);
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: #09011e;
+    color: var(--color-text);
+    line-height: 1.1;
+  }
+}
+.header {
+  width: 90%;
+  background-color: hsl(224, 21%, 20%);
+  margin: 20px 50px;
+  border-radius: 15px;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  margin-left: 12px;
+  margin-left: 2px;
+}
+.mood {
+  margin: auto;
+  margin-right: 2px;
+  padding: 10px;
+  border: 0 solid #1a1a1a;
+  border-radius: 7px;
+  background: #3d4364;
+  box-shadow: #0056b3;
+}
