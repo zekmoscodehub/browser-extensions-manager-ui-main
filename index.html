@@ -1,9 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
+<head>
+<!-- displays site properly based on user's device -->
 
     <link
       rel="icon"
@@ -12,20 +10,11 @@
       href="./assets/images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="assets/style.css" />
-
-    <title>Frontend Mentor | Browser extensions manager UI</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 0.6875rem;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
-  </head>
+   <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+       <title>Frontend Mentor | Browser extensions manager UI</title>
+     </head>
   <body>
     <div class="header">
       <div class="logo">
@@ -35,75 +24,329 @@
           class="logo"
         />
       </div>
-      <div class="mood">
-        <img
-          src="./assets/images/icon-sun.svg"
-          alt="Sun icon, a circular yellow symbol with rays, used as the light mode toggle in the page header."
-          class="sun-icon"
-          <img src="assets/images/icon-moon.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-        
-      </div>
+   <div class="mood">
+  <img src="./assets/images/icon-sun.svg"
+       alt="Switch to light mode"
+       id="themeToggle" 
+       onclick="toggleTheme()" 
+       class="sun-icon"
+       role="button"
+       tabindex="0"/>
+</div>
+
     </div>
-    <!-- Extensions List
+    <!-- Main Navigation Header -->
+    <header class="content-top">
+      <script>
+        const active = document.getElementsByClassName("#menu-taps");
+        console.log(active);
+      </script>
+      <div class="main-title">Extensions List</div>
+      <nav class="menu-links">
+        <a href="#"class="menu-taps">All</a>
+        <a href="#"class="menu-taps">Active</a>
+        <a href="#"class="menu-taps">Inactive</a>
+      </nav>
+    </header>
 
-  All
-  Active
-  Inactive -->
+    <!-- Extensions Grid UI Main Stream Layout -->
+    <main class="card-container">
+      <!-- Extension Card 1 -->
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-devlens.svg"
+            alt="DevLens"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">DevLens</h2>
+            <p class="card-paragraph">
+              Quickly inspect page layouts and visualize element boundaries.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-    <!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
+      <!-- Extension Card 2 -->
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-style-spy.svg"
+            alt="StyleSpy"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">StyleSpy</h2>
+            <p class="card-paragraph">
+              Instantly analyze and copy CSS configurations from any web
+              element.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-    <!-- DevLens
-  Quickly inspect page layouts and visualize element boundaries.
-  Remove
+      <!-- Extension Card 3 -->
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-speed-boost.svg"
+            alt="SpeedBoost"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">SpeedBoost</h2>
+            <p class="card-paragraph">
+              Optimizes browser resource usage to accelerate system page
+              loading.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  StyleSpy
-  Instantly analyze and copy CSS from any webpage element.
-  Remove
+      <!-- Extension Card 4 -->
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-json-wizard.svg"
+            alt="JSON Wizard"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">JSON Wizard</h2>
+            <p class="card-paragraph">
+              Formats, validates, and prettifies JSON data response trees
+              seamlessly.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  SpeedBoost
-  Optimizes browser resource usage to accelerate page loading.
-  Remove
+     <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-tab-master-pro.svg"
+            alt="TabMaster"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">TapMaster</h2>
+            <p class="card-paragraph">
+              Organizes browser tabs into groups and sessions. 
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  JSONWizard
-  Formats, validates, and prettifies JSON responses in-browser.
-  Remove
+       <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-viewport-buddy.svg"
+            alt="ViewPortbuddy"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">ViewPortbuddy</h2>
+            <p class="card-paragraph">
+              Simulates various screen resolutions directly within the browser. 
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  TabMaster Pro
-  Organizes browser tabs into groups and sessions.
-  Remove
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-markup-notes.svg"
+            alt="Markup Notes"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">Markup Notes</h2>
+            <p class="card-paragraph">
+             Enables annotation and notes directly onto webpages for collaborative debugging.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  ViewportBuddy
-  Simulates various screen resolutions directly within the browser.
-  Remove
+       <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-grid-guides.svg"
+            alt="Grid Guides"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">Grid Guides</h2>
+            <p class="card-paragraph">
+             Overlay customizable grids and alignment guides on any webpage.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  Markup Notes
-  Enables annotation and notes directly onto webpages for collaborative debugging.
-  Remove
 
-  GridGuides
-  Overlay customizable grids and alignment guides on any webpage.
-  Remove
+        <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-palette-picker.svg"
+            alt="Palette Picker"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">Palette Picker</h2>
+            <p class="card-paragraph">
+             Select and customize color palettes for consistent design elements.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  Palette Picker
-  Instantly extracts color palettes from any webpage.
-  Remove
+        <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-link-checker.svg"
+            alt="Link Checker"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">Link Checker</h2>
+            <p class="card-paragraph">
+             Identify and report broken links on any webpage.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  LinkChecker
-  Scans and highlights broken links on any page.
-  Remove
+        <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-dom-snapshot.svg"
+            alt="DOM Snapshot"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">DOM Snapshot</h2>
+            <p class="card-paragraph">
+             Take snapshots of the DOM for analysis and debugging.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+        <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-console-plus.svg"
+            alt="Console Plus"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">Console Plus</h2>
+            <p class="card-paragraph">
+             Enhanced developer console with advanced filtering and logging.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <!-- Status Toggle Switch -->
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
 
-  DOM Snapshot
-  Capture and export DOM structures quickly.
-  Remove
+    </main>
 
-  ConsolePlus
-  Enhanced developer console with advanced filtering and logging.
-  Remove -->
-
-    <footer class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Moses Zekrumah - Zekmos</a>.
-    </footer>
   </body>
 </html>
