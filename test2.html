@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extensions Dashboard</title>
+    <link rel="preconnect" href="https://googleapis.com" />
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link
+      href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==========================================
+           1. CORE VARIABLE TOKENS (DARK MODE DEFAULT)
+           ========================================== */
+      :root {
+        --bg-main: #0b102f;
+        --bg-surface: hsl(224, 21%, 20%);
+        --bg-card: rgba(254, 255, 255, 0.06);
+        --border-color: hsl(226, 25%, 17%);
+        --text-primary: #ffffff;
+        --text-secondary: #b4b9d0;
+        --color-danger: #ef4444;
+        --switch-bg-inactive: #3d4364;
+        --switch-bg-active: #ef4444;
+        --switch-dot: #ffffff;
+        --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* ==========================================
+           2. LIGHT MODE OVERRIDES
+           ========================================== */
+      body.light-mode {
+        --bg-main: #f4f6fa;
+        --bg-surface: #ffffff;
+        --bg-card: #ffffff;
+        --border-color: #e2e8f0;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --switch-bg-inactive: #cbd5e1;
+      }
+
+      /* ==========================================
+           3. BASE STRUCTURE & LAYOUT STYLES
+           ========================================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.5;
+        padding: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* Header Engine */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--bg-surface);
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--border-color);
+        transition: var(--transition-smooth);
+      }
+
+      .logo img {
+        height: 32px;
+        display: block;
+      }
+
+      /* Mood Component Styling */
+      .mood {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.15);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+
+      body.light-mode .mood {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .mood-icon {
+        width: 20px;
+        height: 20px;
+        transition: var(--transition-smooth);
+      }
+
+      /* ==========================================
+           4. VISIBILITY ENGINE (SHOW ONLY ONE ICON)
+           ========================================== */
+      /* By default (Dark Mode): Hide the Moon icon, show the Sun icon */
+      #moonBtn {
+        display: none;
+      }
+      #sunBtn {
+        display: block;
+      }
+
+      /* When Light Mode is active: Flip the visibility states */
+      body.light-mode #sunBtn {
+        display: none;
+      }
+      body.light-mode #moonBtn {
+        display: block;
+      }
+
+      /* Card Feed Layout */
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+      }
+
+      .card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 24px;
+        transition: var(--transition-smooth);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .card-header-block {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .card-icon {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .card-paragraph {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 18px;
+      }
+
+      body.light-mode .card-footer {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .btn {
+        background-color: transparent;
+        color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+      }
+
+      .btn:hover {
+        background-color: var(--color-danger);
+        color: #ffffff;
+        border-color: var(--color-danger);
+      }
+
+      /* Toggle Switches */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 46px;
+        height: 24px;
+        cursor: pointer;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--switch-bg-inactive);
+        transition: var(--transition-smooth);
+        border-radius: 34px;
+      }
+
+      .slider::before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: var(--switch-dot);
+        transition: var(--transition-smooth);
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: var(--switch-bg-active);
+      }
+
+      input:checked + .slider::before {
+        transform: translateX(22px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Navigation Header -->
+    <div class="header">
+      <div class="logo">
+        <img
+          src="./assets/images/logo.svg"
+          alt="Browser extensions manager brand mark"
+          class="logo"
+        />
+      </div>
+
+      <!-- Interactive Theme Controller (Clicking this wrapper element handles the toggle) -->
+      <div class="mood" onclick="toggleTheme()" role="button" tabindex="0">
+        <!-- Sun displays during default Dark Mode. Clicking it switches page to Light Mode. -->
+        <img
+          src="./assets/images/icon-sun.svg"
+          alt="Switch to light mode"
+          id="sunBtn"
+          class="mood-icon"
+        />
+
+        <!-- Moon displays during Light Mode. Clicking it switches page back to Dark Mode. -->
+        <img
+          src="./assets/images/icon-moon.svg"
+          alt="Switch to dark mode"
+          id="moonBtn"
+          class="mood-icon"
+        />
+      </div>
+    </div>
+
+    <!-- Extensions Grid Stream Layout -->
+    <main class="card-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-header-block">
+          <img
+            src="assets/images/logo-devlens.svg"
+            alt="DevLens"
+            class="card-icon"
+          />
+          <div class="card-content">
+            <h2 class="title">DevLens</h2>
+            <p class="card-paragraph">
+              Quickly inspect page layouts and visualize element boundaries.
+            </p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn">Remove</button>
+          <label class="switch">
+            <input type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==========================================
+       5. SIMPLIFIED THEME SWITCH TOGGLE LOGIC
+       ========================================== -->
+    <script>
+      function toggleTheme() {
+        // Checks if 'light-mode' exists: if yes, removes it; if no, adds it.
+        document.body.classList.toggle("light-mode");
+      }
+    </script>
+  </body>
+</html>
