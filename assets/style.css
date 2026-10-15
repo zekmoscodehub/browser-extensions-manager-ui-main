@@ -13,9 +13,8 @@
   --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==========================================
-           2. LIGHT MODE OVERRIDES
-           ========================================== */
+/* 2. LIGHT MODE */
+
 body.light-mode {
   --bg-main: #f4f6fa;
   --bg-surface: #ffffff;
@@ -86,10 +85,6 @@ body.light-mode .mood {
   transition: var(--transition-smooth);
 }
 
-/* ==========================================
-           4. VISIBILITY ENGINE (SHOW ONLY ONE ICON)
-           ========================================== */
-/* By default (Dark Mode): Hide the Moon icon, show the Sun icon */
 #moonBtn {
   display: none;
 }
@@ -97,7 +92,6 @@ body.light-mode .mood {
   display: block;
 }
 
-/* When Light Mode is active: Flip the visibility states */
 body.light-mode #sunBtn {
   display: none;
 }
@@ -120,7 +114,13 @@ body.light-mode #moonBtn {
   letter-spacing: -0.025em;
   font-family: "Noto Sans", sans-serif;
 }
-
+.menu-links .menu-taps {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--text-main);
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
 .menu-links {
   display: flex;
   align-items: center;
@@ -138,18 +138,18 @@ body.light-mode #moonBtn {
 .menu-links a:hover {
   color: var(--text-primary);
 }
-.menu-taps:active {
-  color: var(--text-primary);
+.menu-taps.active {
+  background-color: var(--color-danger);
+  color: #ffffff;
 }
 
-/* Responsive Dashboard Feed Grid Engine */
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 
-/* Card Master Grid Box */
+/* Master Grid Box */
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -203,7 +203,6 @@ body.light-mode #moonBtn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-top: 1px solid rgba(255, 255, 255, 0.05); */
   padding-top: 18px;
 }
 
@@ -228,7 +227,6 @@ a:hover {
   border-color: var(--color-danger);
 }
 
-/* Pure CSS Custom Toggle Switch Component */
 .switch {
   position: relative;
   display: inline-block;
@@ -237,14 +235,12 @@ a:hover {
   cursor: pointer;
 }
 
-/* Hiden default browser checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Slider Track Base */
 .slider {
   position: absolute;
   top: 0;
@@ -256,7 +252,6 @@ a:hover {
   border-radius: 34px;
 }
 
-/*  Dial Dot */
 .slider::before {
   position: absolute;
   content: "";
@@ -270,7 +265,6 @@ a:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* State Modifiers when Checkbox is Checked */
 input:checked + .slider {
   background-color: var(--switch-bg-active);
 }
@@ -278,13 +272,10 @@ input:checked + .slider {
 input:checked + .slider::before {
   transform: translateX(22px);
 }
-
-/* Focus outline indicator for web accessibility standards */
 input:focus-visible + .slider {
   box-shadow: 0 0 0 2px var(--text-primary);
 }
 
-/* Small Screen Media Breakpoints */
 @media screen and (max-width: 600px) {
   .content-top {
     flex-direction: column;
@@ -306,7 +297,8 @@ input:focus-visible + .slider {
   padding: 2rem;
   background-color: gray;
 }
-.attribution, .attribution a {
+.attribution,
+.attribution a {
   text-decoration: none;
   color: hsl(240, 62%, 88%);
   border: none;

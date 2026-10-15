@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- displays site properly based on user's device -->
-
+   
     <link
       rel="icon"
       type="image/png"
@@ -28,9 +27,8 @@
         />
       </div>
 
-      <!-- Interactive Theme Controller (Clicking this wrapper element handles the toggle) -->
       <div class="mood" onclick="toggleTheme()" role="button" tabindex="0">
-        <!-- Sun displays during default Dark Mode. Clicking it switches page to Light Mode. -->
+   
         <img
           src="./assets/images/icon-sun.svg"
           alt="Switch to light mode"
@@ -38,7 +36,7 @@
           class="mood-icon"
         />
 
-        <!-- Moon displays during Light Mode. Clicking it switches page back to Dark Mode. -->
+
         <img
           src="./assets/images/icon-moon.svg"
           alt="Switch to dark mode"
@@ -47,20 +45,19 @@
         />
       </div>
     </div>
-    <!-- Main Navigation Header -->
-    <header class="content-top">
-      <div class="main-title">Extensions List</div>
-      <nav class="menu-links">
-        <a href="#" class="menu-taps">All</a>
-        <a href="#" class="menu-taps">Active</a>
-        <a href="#" class="menu-taps">Inactive</a>
-      </nav>
-    </header>
+   <header class="header content-top">
+  <div class="main-title">Extensions List</div>
+  <nav class="menu-links">
+     <a href="#" class="menu-taps active">All</a>
+    <a href="#" class="menu-taps">Active</a>
+    <a href="#" class="menu-taps">Inactive</a>
+  </nav>
+</header>
 
-    <!-- Extensions Grid UI Main Stream Layout -->
+
+ 
     <main class="card-container">
-      <!-- Extension Card 1 -->
-      <div class="card">
+       <div class="card">
         <div class="card-header-block">
           <img
             src="assets/images/logo-devlens.svg"
@@ -76,7 +73,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+ 
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -84,7 +81,7 @@
         </div>
       </div>
 
-      <!-- Extension Card 2 -->
+ 
       <div class="card">
         <div class="card-header-block">
           <img
@@ -102,15 +99,14 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
-          <label class="switch">
+           <label class="switch">
             <input type="checkbox" />
             <span class="slider"></span>
           </label>
         </div>
       </div>
 
-      <!-- Extension Card 3 -->
+   
       <div class="card">
         <div class="card-header-block">
           <img
@@ -128,7 +124,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -136,7 +132,7 @@
         </div>
       </div>
 
-      <!-- Extension Card 4 -->
+   
       <div class="card">
         <div class="card-header-block">
           <img
@@ -154,7 +150,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -178,7 +174,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -202,7 +198,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -227,7 +223,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -251,7 +247,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+   
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -276,7 +272,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+  
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -300,7 +296,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+  
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -324,8 +320,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
-          <label class="switch">
+            <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
           </label>
@@ -347,7 +342,7 @@
         </div>
         <div class="card-footer">
           <button class="btn">Remove</button>
-          <!-- Status Toggle Switch -->
+  
           <label class="switch">
             <input type="checkbox" checked />
             <span class="slider"></span>
@@ -357,8 +352,23 @@
     </main>
 
     <script>
+  
+  const links = document.querySelectorAll('.menu-taps');
+
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+  
+      e.preventDefault(); 
+      
+  
+      links.forEach(item => item.classList.remove('active'));
+      
+  
+      this.classList.add('active');
+    });
+  });
+
       function toggleTheme() {
-        // Checks if 'light-mode' exists: if yes, removes it; if no, adds it.
         document.body.classList.toggle("light-mode");
       }
     </script>
